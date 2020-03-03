@@ -1,8 +1,5 @@
 ﻿using StarshipBattle.Data.Entites;
 using StarshipBattle.Logic.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StarshipBattle.Logic.Extensions
 {
@@ -24,6 +21,27 @@ namespace StarshipBattle.Logic.Extensions
             return new Starship
             {
                 Id = starship.Id,
+                CrewQuantity = starship.CrewQuantity,
+                ImageUrl = starship.ImageUrl,
+                Name = starship.Name
+            };
+        }
+
+        public static Starship ToEntity(this UpsertStarshipDto starship)
+        {
+            return new Starship
+            {
+                CrewQuantity = starship.CrewQuantity,
+                ImageUrl = starship.ImageUrl,
+                Name = starship.Name
+            };
+        }
+
+        public static Starship ToEntity(this UpsertStarshipDto starship, int id)
+        {
+            return new Starship
+            {
+                Id = id,
                 CrewQuantity = starship.CrewQuantity,
                 ImageUrl = starship.ImageUrl,
                 Name = starship.Name

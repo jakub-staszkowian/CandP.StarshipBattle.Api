@@ -19,9 +19,9 @@ namespace StarshipBattle.Logic.IoC
 
         private static void RegisterValidators(this IServiceCollection services)
         {
-            var validatorImplementations = typeof(IValidator<>).Assembly
+            var validatorImplementations = typeof(IValidator).Assembly
                 .GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.IsAssignableFrom(typeof(IValidator<>)))
+                .Where(t => t.IsClass && !t.IsAbstract && typeof(IValidator).IsAssignableFrom(t))
                 .ToList();
 
             foreach (var validator in validatorImplementations)

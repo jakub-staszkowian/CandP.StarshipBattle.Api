@@ -1,6 +1,6 @@
 ﻿namespace StarshipBattle.Logic.Validation.Interfaces
 {
-    public interface IValidator<TModel>
+    public interface IValidator<TModel> : IValidator
     {
         void Validate(TModel model);
     }

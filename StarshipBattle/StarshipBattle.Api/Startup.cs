@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StarshipBattle.Api.Extensions;
 using StarshipBattle.Logic.IoC;
 
 namespace StarshipBattle.Api
@@ -20,6 +21,7 @@ namespace StarshipBattle.Api
         {
             services.AddControllers();
             services.RegisterLogicServices();
+            services.AddSwagger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -29,6 +31,7 @@ namespace StarshipBattle.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureSwagger();
             app.UseRouting();
 
             app.UseAuthorization();

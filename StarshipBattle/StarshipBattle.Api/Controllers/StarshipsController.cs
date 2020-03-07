@@ -49,7 +49,7 @@ namespace StarshipBattle.Api.Controllers
             return _starshipWriteService.Edit(id, request);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public bool Remove(int id)
         {
             return _starshipWriteService.Remove(id);

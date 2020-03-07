@@ -4,6 +4,11 @@ namespace StarshipBattle.Logic.Fixture.DataGenerators
 {
     public class UpsertStarshipDtoGenerator
     {
+        public static UpsertStarshipDto GetNull()
+        {
+            return null;
+        }
+
         public static UpsertStarshipDto GetValid()
         {
             return new UpsertStarshipDto

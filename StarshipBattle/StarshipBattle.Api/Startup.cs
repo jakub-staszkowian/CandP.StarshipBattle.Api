@@ -15,11 +15,26 @@ namespace StarshipBattle.Api
             Configuration = configuration;
         }
 
+        private readonly string _corsPolicyName = "AllowAll";
+
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(_corsPolicyName,
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.RegisterLogicServices();
             services.AddSwagger();
         }
@@ -35,6 +50,7 @@ namespace StarshipBattle.Api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(_corsPolicyName);
 
             app.UseEndpoints(endpoints =>
             {
